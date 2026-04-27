@@ -221,3 +221,98 @@ nav ul li a:hover
 {
     width: 30px;
 }
+
+.tentang
+{
+    display: grid;
+    justify-content: center;
+    margin-top: 10%;
+    font-size: 15pt;
+}
+ 
+.card
+{
+    background-color: var(--blue);
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: 20px 20px black;
+}
+ 
+.card h1
+{
+    text-align: center;
+}
+ 
+html
+{
+    scroll-behavior: smooth;
+}
+ 
+footer
+{
+    display: grid;
+    justify-content: center;
+    background-color: var(--blue);
+    margin-top: 10%;
+    padding: 2%;
+}
+ 
+.sosmed img 
+{
+    width: 50px;
+}
+ 
+#copyright
+{
+    text-align: center;
+    padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+
+    nav ul li a
+    {
+        font-size: 11pt;
+    }
+
+    .slider
+    {
+        display: none;
+    }
+
+    .title-p
+    {
+        padding-top: 6rem;
+        margin-left: 20px;
+    }
+
+    .populer
+    {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        font-size: 10pt;
+    }
+
+    .link img
+    {
+        width: 80%;
+    }
+
+    .tentang
+    {
+        width: 90%;
+        padding-left: 2rem;
+        font-size: 13pt;
+    }
+
+    .sosmed
+    {
+        font-size: 10pt;
+        padding-left: 6rem;
+    }
+
+    .sosmed img
+    {
+        width: 10%;
+    }
+}
