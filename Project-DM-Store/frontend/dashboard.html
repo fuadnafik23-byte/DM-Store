@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Admin</title>
+
+<!-- ICON -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#111827;
+  color:white;
+  padding:30px;
+}
+
+h1{
+  margin-bottom:25px;
+  font-size:32px;
+}
+
+.card{
+  background:#1f2937;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+.card h2{
+  margin-bottom:15px;
+  font-size:22px;
+}
+
+input,select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:8px;
+  background:#374151;
+  color:white;
+  outline:none;
+}
+
+input::placeholder{
+  color:#d1d5db;
+}
+
+button{
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+  font-weight:bold;
+}
+
+/* BUTTON FORM */
+.btnTambah{
+  margin-top:15px;
+  width:100%;
+  padding:12px;
+  background:#2563eb;
+  color:white;
+  font-size:15px;
+}
+
+.btnTambah:hover{
+  background:#1d4ed8;
+}
+
+/* SEARCH */
+.search-box{
+  position:relative;
+  margin-bottom:20px;
+}
+
+.search-box i{
+  position:absolute;
+  left:15px;
+  top:15px;
+  color:#9ca3af;
+}
+
+.search-box input{
+  padding-left:45px;
+}
+
+/* TABLE */
+table{
+  width:100%;
+  border-collapse:collapse;
+  overflow:hidden;
+  border-radius:12px;
+  background:#1f2937;
+}
+
+th,td{
+  padding:15px;
+  text-align:center;
+}
+
+th{
+  background:#2563eb;
+}
+
+tr:nth-child(even){
+  background:#273244;
+}
+
+tr:hover{
+  background:#374151;
+}
+
+/* AKSI BUTTON */
+.aksi{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+}
+
+.aksi button{
+  width:42px;
+  height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:16px;
+  border-radius:10px;
+}
+
+.proses{
+  background:#f59e0b;
+  color:white;
+}
+
+.proses:hover{
+  background:#d97706;
+}
+
+.selesai{
+  background:#10b981;
+  color:white;
+}
+
+.selesai:hover{
+  background:#059669;
+}
+
+.hapus{
+  background:#ef4444;
+  color:white;
+}
+
+.hapus:hover{
+  background:#dc2626;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  table{
+    display:block;
+    overflow-x:auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1><i class="fa-solid fa-gauge"></i> Dashboard Order Zero Store</h1>
+
+<div class="card">
+  <h2>
+    <i class="fa-solid fa-cart-shopping"></i>
+    Total Pesanan:
+    <span id="total">0</span>
+  </h2>
+</div>
+
+<!-- FORM -->
+<div class="card">
+  <h2>
+    <i class="fa-solid fa-plus"></i>
+    Tambah Pesanan
+  </h2>
+
+  <form id="formTambah">
+    <input type="number" id="id" placeholder="ID Pesanan" required>
+
+    <input type="text" id="nama" placeholder="Nama" required>
+
+    <input type="text" id="game" placeholder="Game" required>
+
+    <input type="number" id="nominal" placeholder="Nominal" required>
+
+    <input type="text" id="whatsapp" placeholder="Whatsapp" required>
+
+    <select id="status">
+      <option value="Baru">Baru</option>
+      <option value="Diproses">Diproses</option>
+      <option value="Selesai">Selesai</option>
+    </select>
+
+    <button type="submit" class="btnTambah">
+      <i class="fa-solid fa-floppy-disk"></i>
+      Tambah Pesanan
+    </button>
+  </form>
+</div>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="text" id="search" placeholder="Cari nama/game...">
+</div>
+
+<!-- TABLE -->
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Nama</th>
+<th>Game</th>
+<th>Nominal</th>
+<th>Whatsapp</th>
+<th>Status</th>
+<th>Aksi</th>
+</tr>
+</thead>
+
+<tbody id="data"></tbody>
+</table>
+
+<script>
+async function loadData(){
+  let res = await fetch("http://localhost:3000/api/pesanan");
+  let data = await res.json();
+
+  document.getElementById("total").innerText = data.length;
+
+  let html = "";
+
+  data.forEach(item=>{
+    html += `
+    <tr>
+      <td>${item.id}</td>
+      <td>${item.nama}</td>
+      <td>${item.game}</td>
+      <td>${item.nominal}</td>
+      <td>${item.whatsapp}</td>
+      <td>${item.status}</td>
+
+      <td>
+        <div class="aksi">
+          <button class="proses"
+          onclick="updateStatus(${item.id},'Diproses')">
+            <i class="fa-solid fa-gear"></i>
+          </button>
+
+          <button class="selesai"
+          onclick="updateStatus(${item.id},'Selesai')">
+            <i class="fa-solid fa-check"></i>
+          </button>
+
+          <button class="hapus"
+          onclick="hapus(${item.id})">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </td>
+    </tr>
+    `;
+  });
+
+  document.getElementById("data").innerHTML = html;
+}
+
+async function updateStatus(id,status){
+  await fetch(`http://localhost:3000/api/status/${id}`,{
+    method:"PUT",
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({status})
+  });
+
+  loadData();
+}
+
+async function hapus(id){
+  await fetch(`http://localhost:3000/api/hapus/${id}`,{
+    method:"DELETE"
+  });
+
+  loadData();
+}
+
+/* CREATE */
+document.getElementById("formTambah")
+.addEventListener("submit", async (e)=>{
+
+  e.preventDefault();
+
+  let nama = document.getElementById("nama").value;
+  let game = document.getElementById("game").value;
+  let nominal = document.getElementById("nominal").value;
+  let whatsapp = document.getElementById("whatsapp").value;
+  let status = document.getElementById("status").value;
+
+  await fetch("http://localhost:3000/api/tambah",{
+    method:"POST",
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      nama,
+      game,
+      nominal,
+      whatsapp,
+      status
+    })
+  });
+
+  e.target.reset();
+  loadData();
+});
+
+loadData();
+</script>
+
+</body>
+</html>
