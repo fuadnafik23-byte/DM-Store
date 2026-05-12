@@ -1,318 +1,116 @@
-:root
-{
-    --blue : #2c2546;
-    --dark-blue : #1b1535;
-    --green : #00eb09;
-    --white : #fff;
-}
-*
-{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    list-style-type: none;
-    box-sizing: border-box;
-    font-family: 'Tahoma';
-}
-body
-{
-    background-color: var(--dark-blue);
-    color: var(--white);
-}
-header
-{
-    position: fixed;
-    width: 100%;
-    font-weight: bold;
-    text-align: center;
-    background-color: var(--blue);
-    padding: 2%;
-    top: 0;
-}
-.title
-{
-    color: var(--green);
-    border-bottom: 1px solid var(--white);
-    font-size: 15pt;
-}
-.input-search
-{
-    width: 30%;
-    border: none;
-    border-radius: 0 0 0 15px;
-    padding: 2px;
-}
-.input-submit
-{
-    margin-left: -5px;
-    border: none;
-    border-radius: 0 15px 0 0;
-    padding: 2px;
-    background-color: var(--green);
-    color: var(--blue);
-    width: 5%;
-    font-weight: bold;
-}
-nav
-{
-    margin-top: 15px;;
-}
-nav ul
-{
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-}
-nav ul li a
-{
-    color: var(--green);
-}
-nav ul li a:hover
-{
-    border-bottom: 3px solid var(--white);
-}
-.slider
-{
-    margin-top: 10%;
-    display: block;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    width: 65%;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Kode CSS kamu yang lain di bawah sini */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.slider h4
-{
-    margin-top: 20%;
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #111827;
+  color: white;
+  padding: 30px;
 }
 
-.slides
-{
-    display: flex;
-    width: 50rem;
-    overflow: hidden;
+h1 {
+  margin-bottom: 25px;
+  font-size: 28px;
 }
 
-.slides img 
-{
-    border-radius: 10px;
+.card {
+  background: #1f2937;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-.slide
-{
-    width: 50rem;
-    transition: .5s;
+/* Flexbox untuk Input Sejajar */
+.input-group {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
-.choose_1:checked ~ .slides > .s1
-{
-    margin-left: -0rem;
+.input-field {
+  flex: 1;
 }
 
-.choose_2:checked ~ .slides > .s1
-{
-    margin-left: -50rem;
+.input-field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #9ca3af;
 }
 
-.overlay 
-{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #374151;
+  color: white;
+  outline: none;
 }
 
-.overlay:target 
-{
-    visibility: visible;
-    opacity: 1;
+input:focus {
+  background: #4b5563;
 }
 
-.popup 
-{
-    margin: 70px auto;
-    padding: 20px;
-    background: var(--dark-blue);
-    border-radius: 5px;
-    width: 30%;
-    position: relative;
-    transition: all 5s ease-in-out;
-}
-  
-.popup h2 {
-    margin-top: 0;
-    color: var(--white);
-    font-family: Tahoma, Arial, sans-serif;
+button {
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
 }
 
-.popup .close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    transition: all 200ms;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    color: #333;
+.btnTambah {
+  margin-top: 15px;
+  width: 100%;
+  padding: 12px;
+  background: #2563eb;
+  color: white;
 }
 
-.popup .close:hover 
-{
-    color: #06D85F;
+.btnTambah:hover {
+  background: #1d4ed8;
 }
 
-.content 
-{
-    max-height: 30%;
-    width: 50%;
+/* Tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1f2937;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
-.title-p
-{
-    margin-left: 60px;
-    margin-top: 5%;
-}
-.populer
-{
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #374151;
 }
 
-.populer img
-{
-    border-radius: 10px;
+th {
+  background: #2563eb;
 }
 
-.harga
-{
-    color: var(--green);
+.aksi {
+  display: flex;
+  gap: 8px;
 }
 
-.link a
-{
-    color: var(--white);
+.hapus {
+  background: #ef4444;
+  color: white;
+  padding: 8px 12px;
 }
 
-.link a:hover
-{
-    color: var(--green);
-}
-
-.pesan
-{
-    background-color: var(--green);
-    padding: 5%;
-    border-radius: 10px;
-}
-
-.pesan:hover
-{
-    background-color: var(--white);
-}
-
-.pesan img
-{
-    width: 30px;
-}
-
-.tentang
-{
-    display: grid;
-    justify-content: center;
-    margin-top: 10%;
-    font-size: 15pt;
-}
- 
-.card
-{
-    background-color: var(--blue);
-    padding: 5%;
-    border-radius: 10px;
-    box-shadow: 20px 20px black;
-}
- 
-.card h1
-{
-    text-align: center;
-}
- 
-html
-{
-    scroll-behavior: smooth;
-}
- 
-footer
-{
-    display: grid;
-    justify-content: center;
-    background-color: var(--blue);
-    margin-top: 10%;
-    padding: 2%;
-}
- 
-.sosmed img 
-{
-    width: 50px;
-}
- 
-#copyright
-{
-    text-align: center;
-    padding: 10px;
-}
-
-@media screen and (max-width: 600px) {
-
-    nav ul li a
-    {
-        font-size: 11pt;
-    }
-
-    .slider
-    {
-        display: none;
-    }
-
-    .title-p
-    {
-        padding-top: 6rem;
-        margin-left: 20px;
-    }
-
-    .populer
-    {
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        font-size: 10pt;
-    }
-
-    .link img
-    {
-        width: 80%;
-    }
-
-    .tentang
-    {
-        width: 90%;
-        padding-left: 2rem;
-        font-size: 13pt;
-    }
-
-    .sosmed
-    {
-        font-size: 10pt;
-        padding-left: 6rem;
-    }
-
-    .sosmed img
-    {
-        width: 10%;
-    }
+.hapus:hover {
+  background: #dc2626;
 }
