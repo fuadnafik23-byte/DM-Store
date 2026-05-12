@@ -194,10 +194,10 @@ tr:hover{
   </h2>
 
   <form id="formTambah">
-    <input type="number" id="id" placeholder="ID Pesanan" required>
+    <input type="text" id="gameId" placeholder="Masukkan ID Game">
 
     <input type="text" id="nama" placeholder="Nama" required>
-
+    
     <input type="text" id="game" placeholder="Game" required>
 
     <input type="number" id="nominal" placeholder="Nominal" required>
@@ -252,7 +252,7 @@ async function loadData(){
   data.forEach(item=>{
     html += `
     <tr>
-      <td>${item.id}</td>
+      <td>${item.gameId}</td>
       <td>${item.nama}</td>
       <td>${item.game}</td>
       <td>${item.nominal}</td>
@@ -313,17 +313,19 @@ document.getElementById("formTambah")
   let nominal = document.getElementById("nominal").value;
   let whatsapp = document.getElementById("whatsapp").value;
   let status = document.getElementById("status").value;
+  let gameId = document.getElementById("gameId").value;
 
   await fetch("http://localhost:3000/api/tambah",{
     method:"POST",
     headers:{'Content-Type':'application/json'},
     body:JSON.stringify({
+      gameId,
       nama,
       game,
       nominal,
       whatsapp,
       status
-    })
+  })
   });
 
   e.target.reset();
