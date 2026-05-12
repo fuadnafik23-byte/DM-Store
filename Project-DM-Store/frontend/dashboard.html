@@ -14,6 +14,10 @@
   <div class="card">
     <h2><i class="fa-solid fa-plus"></i> Tambah Pesanan</h2>
     <form id="formTambah">
+      <div class="input-field">
+    <label>Nama Pembeli</label>
+    <input type="text" id="nama" placeholder="Nama" required>
+  </div>
       <div class="input-group">
         <div class="input-field">
           <label>ID Game</label>
@@ -33,10 +37,6 @@
     <option value="Mobile Legends">Mobile Legends</option>
     <option value="Free Fire">Free Fire</option>
     <option value="PUBG Mobile">PUBG Mobile</option>
-    <option value="Genshin Impact">Genshin Impact</option>
-    <option value="Valorant">Valorant</option>
-    <option value="Honor of Kings">Honor of Kings</option>
-    <option value="Point Blank">Point Blank</option>
   </select>
 </div>
       </div>
@@ -68,7 +68,6 @@
   <table>
     <thead>
       <tr>
-        <th>ID Transaksi</th>
         <th>Data Akun</th>
         <th>Nama</th>
         <th>Game</th>
@@ -79,6 +78,18 @@
     </thead>
     <tbody id="data"></tbody>
   </table>
+
+  <div id="modalEdit" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background:white; padding:20px; border:1px solid #ccc; z-index:1000;">
+  <h3>Edit Pesanan</h3>
+  <input type="text" id="editNama">
+  <select id="editStatus">
+    <option value="Baru">Baru</option>
+    <option value="Diproses">Diproses</option>
+    <option value="Selesai">Selesai</option>
+  </select>
+  <button onclick="simpanEdit()">Update</button>
+  <button onclick="tutupEdit()">Batal</button>
+</div>
 
   <script src="script.js"></script>
 </body>
