@@ -1,0 +1,241 @@
+/* Base Styling & Reset */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: #0d0b14;
+  color: #f8fafc;
+  background-image: radial-gradient(circle at top right, #1a1625 0%, #0d0b14 70%);
+  min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  background-color: #151221;
+  border-bottom: 1px solid rgba(238, 251, 19, 0.1);
+}
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #eefb13;
+  text-shadow: 0 0 10px rgba(238, 251, 19, 0.3);
+  text-decoration: none;
+}
+.nav-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+/* Container & Layout Utama 2 Kolom (Gaya Codashop) */
+.container-detail {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Kolom Kiri 1 bagian, Kolom Kanan 2 bagian */
+  gap: 30px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .container-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* KOLOM KIRI: INFO GAME */
+.game-info-sidebar {
+  position: sticky;
+  top: 20px;
+}
+.game-banner {
+  width: 100%;
+  border-radius: 16px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  margin-bottom: 15px;
+}
+.game-title-text {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.game-desc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+/* KOLOM KANAN: STEP BY STEP PANELS */
+.step-card {
+  background-color: #151221;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  margin-bottom: 25px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  background-color: #1c182c;
+  padding: 16px 24px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.step-number {
+  background-color: #eefb13;
+  color: #000;
+  font-weight: 900;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%; /* Bulat Sempurna seperti referensi */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 14px;
+  font-size: 15px;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.step-body {
+  padding: 24px;
+}
+
+/* Grid Input Data Akun (Langkah 1) */
+.input-flex-container {
+  display: flex;
+  gap: 16px;
+}
+.input-wrapper {
+  flex: 1;
+}
+.input-wrapper input {
+  background-color: #211c33;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 14px;
+  color: white;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.input-wrapper input:focus {
+  border-color: #eefb13;
+}
+
+/* Grid Item Nominal (Langkah 2) - Berjejer Rapi ke Samping */
+.nominal-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.nominal-box {
+  background-color: #211c33;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.nominal-box:hover {
+  border-color: rgba(238, 251, 19, 0.3);
+}
+.nominal-box.selected {
+  border-color: #eefb13;
+  background-color: rgba(238, 251, 19, 0.03);
+}
+.nominal-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.nominal-price-tag {
+  font-size: 15px;
+  font-weight: 800;
+  color: #eefb13;
+}
+
+/* Grid Sistem Pembayaran (Langkah 3) */
+.payment-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+.payment-box {
+  background-color: #211c33;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.payment-box.selected {
+  border-color: #eefb13;
+}
+.payment-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #fff;
+}
+.payment-logo {
+  font-size: 11px;
+  background: rgba(255,255,255,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* Tombol Aksi Pesan Sekarang */
+.action-panel {
+  background-color: #151221;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(238, 251, 19, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+@media (max-width: 600px) {
+  .action-panel {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+}
+.btn-checkout {
+  background-color: #eefb13;
+  color: #000;
+  border: none;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 14px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.btn-checkout:hover {
+  background-color: #dceb0f;
+}
+.btn-checkout:active {
+  transform: scale(0.97);
+}

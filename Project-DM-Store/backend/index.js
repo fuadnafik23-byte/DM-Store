@@ -19,10 +19,10 @@ app.get("/", (req, res) => {
 
 // Koneksi database
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "127.0.0.1",        // DIUBAH: Menggunakan IP langsung agar tidak kena isu IPv6 Windows
   user: "root",
-  password: "",
-  database: "zerostore"
+  password: "",             // Kosongkan jika menggunakan XAMPP bawaan
+  database: "zerostore"     // Pastikan nama databasenya sesuai dengan yang ada di phpMyAdmin
 });
 
 db.connect((err) => {
