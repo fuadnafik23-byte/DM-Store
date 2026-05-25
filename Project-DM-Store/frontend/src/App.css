@@ -239,3 +239,62 @@ body {
 .btn-checkout:active {
   transform: scale(0.97);
 }
+
+/* ==========================================================================
+   PERBAIKAN UNTUK HALAMAN BERANDA (Merapikan Grid & Mengontrol Ukuran Gambar)
+   ========================================================================== */
+
+/* 1. Mengatur Judul Section "Pilih Game Favorit" */
+.section-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 20px 0 100px 0;
+}
+
+/* 2. Mengatur Wadah Grid Utama (Kunci agar kartu game berjejer ke samping) */
+.game-grid {
+  display: grid;
+  /* Membuat kolom otomatis, minimal lebar kartu 160px (mirip Codashop) */
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 3. Mengatur Kotak Kartu Game */
+.game-card {
+  background-color: #151221; /* Menyamakan warna gelap khas ZeroStore */
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* KUNCI: Memaksa teks nama game pindah ke bawah foto */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+}
+
+.game-card:hover {
+  transform: translateY(-5px); /* Efek melayang sedikit saat di-hover */
+  border-color: #eefb13;       /* Memberi garis kuning menyala saat kursor di atasnya */
+}
+
+/* 4. KUNCI UTAMA: Memaksa Gambar Mengecil & Berbentuk Kotak Presisi */
+.game-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Membuat gambar bulat/kotak sempurna seperti Codashop */
+  object-fit: cover;   /* Memotong gambar secara proporsional agar tidak gepeng */
+}
+
+/* 5. Mengatur Teks Nama Game di dalam <span> */
+.game-card span {
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  display: block;
+}

@@ -70,7 +70,7 @@ function DetailGame({ games }) {
         {gameAktif.img && <img src={gameAktif.img} alt={gameAktif.name} className="game-banner" />}
         <div className="game-title-text">{gameAktif.name}</div>
         <div className="game-desc">
-          Beli top up {gameAktif.name} termurah, aman, dan instan hanya di Takapedia. 
+          Beli top up {gameAktif.name} termurah, aman, dan instan hanya di Zerostore. 
           Proses otomatis 24 jam nonstop. Silakan ikuti langkah pengisian di sebelah kanan untuk menyelesaikan pembelian Anda.
         </div>
       </div>

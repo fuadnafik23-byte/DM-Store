@@ -7,18 +7,16 @@ import './App.css';
 function App() {
   // Master data game beserta SLUG URL-nya (menggunakan huruf kecil & tanda hubung)
   const dataGames = [
-    { name: 'Mobile Legends', slug: 'mobile-legends', img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Free Fire', slug: 'free-fire', img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=400&auto=format&fit=crop' },
-    { name: 'PUBG Mobile', slug: 'pubg-mobile', img: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Genshin Impact', slug: 'genshin-impact', img: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=400&auto=format&fit=crop' },
-    { name: 'Valorant', slug: 'valorant', img: 'https://images.unsplash.com/photo-1560253023-3ec5d502959f?q=80&w=400&auto=format&fit=crop' }
+    { name: 'Mobile Legends', slug: 'mobile-legends', img: 'https://i.scdn.co/image/ab6761610000e5eb1698da6a6a04bf2edc35ed94' },
+    { name: 'Free Fire', slug: 'free-fire', img: 'https://cdn-bgp.bluestacks.com/BGP/id/gametiles_com.dts.freefireth.jpg' },
+    { name: 'PUBG Mobile', slug: 'pubg-mobile', img: 'https://static0.xdaimages.com/wordpress/wp-content/uploads/2018/06/pubg.jpg' },
   ];
 
   return (
     <Router>
       {/* NAVBAR AKAN SELALU MUNCUL DI SETIAP HALAMAN */}
       <nav className="navbar">
-        <Link to="/" className="logo" style={{ textDecoration: 'none' }}>⚔️ TAKAPEDIA</Link>
+        <Link to="/" className="logo" style={{ textDecoration: 'none' }}>ZEROSTORE</Link>
         <div className="nav-links">
           <Link to="/">Semua Game</Link>
           <a href="#">Masuk</a>
