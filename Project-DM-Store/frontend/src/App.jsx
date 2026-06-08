@@ -55,6 +55,14 @@ function App() {
     <Router>
       <nav className="navbar">
         <Link to="/" className="logo" style={{ textDecoration: 'none' }}>ZEROSTORE</Link>
+        <a 
+          href="https://wa.me/6285857430930" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="whatsapp-link"
+        >
+          KONTAK
+        </a>
       </nav>
 
       <Routes>
