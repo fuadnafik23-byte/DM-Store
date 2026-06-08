@@ -22,17 +22,17 @@ const db = mysql.createConnection({
   host: "127.0.0.1",        // DIUBAH: Menggunakan IP langsung agar tidak kena isu IPv6 Windows
   user: "root",
   password: "",             // Kosongkan jika menggunakan XAMPP bawaan
-  database: "zerostore"     // Pastikan nama databasenya sesuai dengan yang ada di phpMyAdmin
+  database: "game_store"     // Pastikan nama databasenya sesuai dengan yang ada di phpMyAdmin
 });
 
 db.connect((err) => {
-  if(err){
-    console.log("Koneksi gagal:", err);
+  if (err) {
+    console.log("Database gagal terkoneksi");
+    console.log(err);
   } else {
-    console.log("MySQL terkoneksi");
+    console.log("Database berhasil terkoneksi");
   }
 });
-
 // READ
 app.get("/api/pesanan", (req, res) => {
   db.query("SELECT * FROM orders", (err, result) => {
@@ -42,6 +42,7 @@ app.get("/api/pesanan", (req, res) => {
 });
 
 // CREATE
+// EDIT DI BAGIAN INI:
 app.post("/api/tambah", (req, res) => {
   const { nama, game, nominal, whatsapp, status } = req.body;
 
@@ -49,7 +50,11 @@ app.post("/api/tambah", (req, res) => {
     "INSERT INTO orders (nama, game, nominal, whatsapp, status) VALUES (?,?,?,?,?)",
     [nama, game, nominal, whatsapp, status],
     (err, result) => {
-      if (err) return res.status(500).send(err);
+      if (err) {
+        console.log("❌ ERROR MYSQL TERJADI:"); // Tambahkan baris ini
+        console.log(err);                      // Tambahkan baris ini untuk cetak error
+        return res.status(500).send(err);
+      }
       res.send("Pesanan berhasil ditambahkan");
     }
   );

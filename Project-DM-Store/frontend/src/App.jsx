@@ -55,10 +55,6 @@ function App() {
     <Router>
       <nav className="navbar">
         <Link to="/" className="logo" style={{ textDecoration: 'none' }}>ZEROSTORE</Link>
-        <div className="nav-links">
-          <Link to="/">Semua Game</Link>
-          <a href="#">Masuk</a>
-        </div>
       </nav>
 
       <Routes>
