@@ -298,3 +298,20 @@ body {
   color: #ffffff;
   display: block;
 }
+.whatsapp-link {
+  color: #ffffff; /* Mengubah warna teks menjadi putih murni */
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+  font-weight: 600; /* Membuat teks sedikit tebal */
+  font-size: 14px; /* Ukuran teks */
+  padding: 8px 16px; /* Jarak di dalam tombol */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Memberikan garis tepi tipis transparan */
+  border-radius: 8px; /* Membuat sudut tombol melengkung rapi */
+  transition: all 0.3s ease; /* Efek animasi halus saat kursor menyentuh tombol */
+}
+
+/* Efek saat kursor diarahkan (hover) ke tombol WhatsApp */
+.whatsapp-link:hover {
+  color: #22c55e; /* Berubah menjadi warna hijau khas WhatsApp */
+  border-color: #22c55e; /* Garis tepi ikut berubah menjadi hijau */
+  background-color: rgba(34, 197, 94, 0.1); /* Memberikan latar belakang hijau transparan tipis */
+}
