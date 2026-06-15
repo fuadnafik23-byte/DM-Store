@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const API_URL = 'http://127.0.0.1:3000/api';
+const API_URL = '/api';
 
 function DetailGame({ games }) {
   const { slug } = useParams();
