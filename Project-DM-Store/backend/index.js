@@ -90,6 +90,43 @@ app.delete("/api/hapus/:id", (req, res) => {
   );
 });
 
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+// Fungsi untuk menerima data pesanan dari frontend
+app.post('/api/tambah', async (req, res) => {
+  try {
+    const dataPesanan = req.body;
+
+    // Menyimpan data ke TiDB Cloud melalui Prisma
+    // PENTING: Ganti 'orders' sesuai dengan nama tabel di schema.prisma Anda (misal: order, orders, atau transaksi)
+    const pesananBaru = await prisma.orders.create({
+      data: {
+        nickname: dataPesanan.nickname,
+        game: dataPesanan.game,     // Sesuaikan nama kolom ini dengan schema.prisma Anda
+        nominal: dataPesanan.nominal,   // Sesuaikan nama kolom ini dengan schema.prisma Anda
+        whatsapp: dataPesanan.whatsapp,     // Sesuaikan nama kolom ini dengan schema.prisma Anda
+        harga: dataPesanan.harga
+      }
+    });
+
+    // Kirim respons sukses ke frontend
+    return res.status(200).json({
+      success: true,
+      message: "Pesanan berhasil dibuat!",
+      data: pesananBaru
+    });
+
+  } catch (error) {
+    console.error("Error backend:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Gagal menyimpan ke database",
+      error: error.message
+    });
+  }
+});
+
 app.listen(3000, () => {
   console.log("Server jalan di port 3000");
 });
