@@ -102,7 +102,7 @@ app.post('/api/tambah', async (req, res) => {
     // PENTING: Ganti 'orders' sesuai dengan nama tabel di schema.prisma Anda (misal: order, orders, atau transaksi)
     const pesananBaru = await prisma.orders.create({
       data: {
-        nickname: dataPesanan.nickname,
+        nama: dataPesanan.nama,
         game: dataPesanan.game,     // Sesuaikan nama kolom ini dengan schema.prisma Anda
         nominal: dataPesanan.nominal,   // Sesuaikan nama kolom ini dengan schema.prisma Anda
         whatsapp: dataPesanan.whatsapp,     // Sesuaikan nama kolom ini dengan schema.prisma Anda
