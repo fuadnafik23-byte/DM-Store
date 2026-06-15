@@ -64,7 +64,7 @@ function App() {
           KONTAK
         </a>
       </nav>
-
+      
       <Routes>
         <Route path="/" element={<Beranda games={dataGames} />} />
         <Route path="/game/:slug" element={<DetailGame games={dataGames} />} />
